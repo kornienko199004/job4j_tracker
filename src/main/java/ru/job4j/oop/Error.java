@@ -1,9 +1,9 @@
 package ru.job4j.oop;
 
 public class Error {
-    boolean active;
-    int status;
-    String message;
+    private boolean active;
+    private int status;
+    private String message;
 
     public Error() {}
 
@@ -20,16 +20,16 @@ public class Error {
     }
 
     public static void main(String[] args) {
-        Error error1 = new Error();
-        error1.printInfo();
+        Error defaultConstructorError = new Error();
+        defaultConstructorError.printInfo();
 
-        Error error2 = new Error(false, 1, "no error");
-        error2.printInfo();
+        Error errorStatusOne = new Error(false, 1, "no error");
+        errorStatusOne.printInfo();
 
-        Error error3 = new Error(true, 2, "Some error");
-        error3.printInfo();
+        Error errorStatusTwo = new Error(true, 2, "Some error");
+        errorStatusTwo.printInfo();
 
-        Error error4 = new Error(false, 3, "no error");
-        error4.printInfo();
+        Error errorStatusThree = new Error(false, 3, "no error");
+        errorStatusThree.printInfo();
     }
 }
