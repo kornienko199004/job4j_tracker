@@ -8,7 +8,6 @@ public class Point {
     private int x;
     private int y;
     private int z;
-    private boolean is3D = false;
 
     public Point(int first, int second) {
         this.x = first;
@@ -19,21 +18,13 @@ public class Point {
         this.x = x;
         this.y = y;
         this.z = z;
-        this.is3D = true;
     }
 
     public double distance(Point that) {
-        if (this.is3D || that.is3D) {
-            return -1D;
-        }
         return sqrt(pow(this.x - that.x, 2) + pow(this.y - that.y, 2));
     }
 
     public double distance3d(Point that) {
-        if (!(this.is3D && that.is3D)) {
-            return -1D;
-        }
-
         return Math.sqrt(Math.pow(that.x - this.x, 2) + Math.pow(that.y - this.x, 2) + Math.pow(that.z - this.z, 2));
     }
 
