@@ -16,10 +16,7 @@ public class Triangle {
     }
 
     public boolean exist(double ab, double ac, double bc) {
-        if (ab + ac < bc || ac + bc < ab || bc + ab < ac) {
-            return false;
-        }
-        return true;
+        return ab + ac > bc && ac + bc > ab && bc + ab > ac;
     }
 
     public double area() {
@@ -35,12 +32,11 @@ public class Triangle {
     }
 
     public static void main(String[] args) {
-        Point a = new Point(0, 0);
-        Point b = new Point(4, 0);
-        Point c = new Point(0, 4);
+        Point a = new Point(12, 0);
+        Point b = new Point(14, 0);
+        Point c = new Point(27, 0);
         Triangle triangle = new Triangle(a, b, c);
         double rsl = triangle.area();
         System.out.println(rsl);
-
     }
 }
