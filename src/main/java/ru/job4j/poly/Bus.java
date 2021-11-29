@@ -1,5 +1,4 @@
 package ru.job4j.poly;
-
 public class Bus implements Transport {
     private int passengersCount;
     private double price;
