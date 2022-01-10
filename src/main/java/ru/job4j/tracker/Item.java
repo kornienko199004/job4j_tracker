@@ -50,4 +50,13 @@ public class Item {
                 ", created=" + created.format(this.FORMATTER) +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Item)) {
+            return false;
+        }
+        Item item = (Item) obj;
+        return name.equals(item.getName()) && id == item.getId() && created.equals(item.getCreated());
+    }
 }
