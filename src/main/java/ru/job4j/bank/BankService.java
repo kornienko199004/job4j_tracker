@@ -5,13 +5,29 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Класс описывает работу сервиса банка
+ * @author ALEKSEY KORNIENKO
+ * @version 1.0
+ */
 public class BankService {
     private final Map<User, List<Account>> users = new HashMap<>();
 
+    /**
+     * Метод принимает на вход пользователя и добавляет в список,
+     * если такого пользователя еще нет в списке.
+     * @param user пользователь, который добавляется в список
+     */
     public void addUser(User user) {
         users.putIfAbsent(user, new ArrayList<Account>());
     }
 
+    /**
+     * Метод добавляет пользователю новый аккаунт,
+     * если находит пользователя по паспорту
+     * @param passport паспорт пользователя
+     * @param account аккаунт пользователя
+     */
     public void addAccount(String passport, Account account) {
         User user = findByPassport(passport);
         if (user != null) {
@@ -22,6 +38,11 @@ public class BankService {
         }
     }
 
+    /**
+     *  Метод ищет пользователя по паспорту
+     * @param passport паспорт пользователя
+     * @return user пользователь
+     */
     public User findByPassport(String passport) {
         for (User user : users.keySet()) {
             if (user.getPassport().equals(passport)) {
@@ -31,6 +52,12 @@ public class BankService {
         return null;
     }
 
+    /**
+     *  Метод ищет аккаунт по реквизиту
+     * @param passport паспорт пользователя
+     * @param requisite реквизиты аккаунта
+     * @return account аккаунт
+     */
     public Account findByRequisite(String passport, String requisite) {
         User user = findByPassport(passport);
 
@@ -45,6 +72,16 @@ public class BankService {
         return null;
     }
 
+    /**
+     *  Метод переводит деньги с одного аккаунта,
+     *  на другой
+     * @param srcPassport паспорт пользователя источника
+     * @param srcRequisite реквизиты аккаунта источника
+     * @param destPassport паспорт пользователя назначения
+     * @param destRequisite реквизиты аккаунта назначения
+     * @param amount сумма для перевода
+     * @return {@code true} если деньги переведены
+     */
     public boolean transferMoney(String srcPassport, String srcRequisite,
                                  String destPassport, String destRequisite, double amount) {
         boolean rsl = false;
